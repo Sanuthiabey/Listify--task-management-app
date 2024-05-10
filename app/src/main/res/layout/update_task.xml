@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/titleTaskTxt"
+            android:id="@+id/TaskTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -21,7 +21,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/closeImg"
+            android:id="@+id/closeImage"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
@@ -32,7 +32,7 @@
             android:id="@+id/viewHLine"
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:layout_below="@id/titleTaskTxt"
+            android:layout_below="@id/TaskTitle"
             android:background="@color/black" />
 
         <LinearLayout
@@ -52,7 +52,7 @@
                 android:hint="Enter The Task Title">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edTaskTitle"
+                    android:id="@+id/editTask"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:background="#EAE4E8"
@@ -62,13 +62,13 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.App.TextInputLayout"
-                android:id="@+id/edTaskDescL"
+                android:id="@+id/TaskDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter The Task Description">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edTaskDesc"
+                    android:id="@+id/editTaskDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#EAE4E8"
