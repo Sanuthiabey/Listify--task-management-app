@@ -16,7 +16,7 @@ class TaskAdapter(private val listener: OnItemClickListener) : RecyclerView.Adap
         val descriptionTextView: TextView = itemView.findViewById(R.id.taskDescription)
         val editIcon: ImageView = itemView.findViewById(R.id.editImage)
         val deleteIcon: ImageView = itemView.findViewById(R.id.deleteImage)
-
+        val categoryTextView: TextView = itemView.findViewById(R.id.categoryText)
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
@@ -49,6 +49,7 @@ class TaskAdapter(private val listener: OnItemClickListener) : RecyclerView.Adap
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val currentItem = taskList[position]
         holder.titleTextView.text = currentItem.title
+        holder.categoryTextView.text = currentItem.category
         holder.descriptionTextView.text = currentItem.description
     }
 

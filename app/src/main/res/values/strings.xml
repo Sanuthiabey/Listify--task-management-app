@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TaskMngmtApp</string>
+    <string-array name="category_options">
+        <item>Work</item>
+        <item>Personal</item>
+        <item>Study</item>
+        <item>Other</item>
+    </string-array>
 </resources>

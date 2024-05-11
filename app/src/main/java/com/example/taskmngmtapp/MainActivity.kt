@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
         // Set up click listener for adding a task
         mainBinding.addTaskBtn.setOnClickListener {
+            clearAddTaskDialogFields()
             addTaskDialog.show()
         }
 
@@ -74,15 +76,16 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
             // Retrieve task title and description from user inputs
             val taskTitleInput = addTaskDialog.findViewById<EditText>(R.id.TaskTi)
             val taskDescriptionInput = addTaskDialog.findViewById<EditText>(R.id.TaskDesc)
+            val categorySpinner = addTaskDialog.findViewById<Spinner>(R.id.categorySpinner)
 
             val taskTitle = taskTitleInput.text.toString().trim()
             val taskDescription = taskDescriptionInput.text.toString().trim()
-
+            val selectedCategory = categorySpinner.selectedItem.toString()
             // Check if the title and description are not empty
-            if (taskTitle.isNotEmpty() && taskDescription.isNotEmpty()) {
+            if (taskTitle.isNotEmpty() && taskDescription.isNotEmpty()  && selectedCategory.isNotEmpty()) {
                 // Create a new task object with the retrieved values
                 val currentDate = Date() // Current date
-                val newTask = Tasks(null, taskTitle, taskDescription, currentDate)
+                val newTask = Tasks(null, taskTitle, taskDescription, currentDate,selectedCategory)
 
                 // Add the new task to the ViewModel
                 taskViewModel.insertTask(newTask)
@@ -109,11 +112,19 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         // Show a confirmation dialog to delete the task
         showDeleteConfirmationDialog(task)
     }
+    private fun clearAddTaskDialogFields() {
+        val taskTitleInput = addTaskDialog.findViewById<EditText>(R.id.TaskTi)
+        val taskDescriptionInput = addTaskDialog.findViewById<EditText>(R.id.TaskDesc)
+
+        taskTitleInput.setText("")
+        taskDescriptionInput.setText("")
+    }
 
     private fun showUpdateTaskDialog(task: Tasks) {
         // Show the update task dialog and populate the form with the task data
         updateTaskDialog.show()
         val taskTitleInput = updateTaskDialog.findViewById<EditText>(R.id.editTask)
+
         val taskDescriptionInput = updateTaskDialog.findViewById<EditText>(R.id.editTaskDesc)
         taskTitleInput.setText(task.title)
         taskDescriptionInput.setText(task.description)
@@ -125,7 +136,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
             val updatedDescription = taskDescriptionInput.text.toString().trim()
 
             if (updatedTitle.isNotEmpty() && updatedDescription.isNotEmpty()) {
-                val updatedTask = Tasks(task.id, updatedTitle, updatedDescription, task.date)
+                val updatedTask = Tasks(task.id, updatedTitle, updatedDescription, task.date,task.category)
                 taskViewModel.updateTask(updatedTask)
                 updateTaskDialog.dismiss()
             } else {

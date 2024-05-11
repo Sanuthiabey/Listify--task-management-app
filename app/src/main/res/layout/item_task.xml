@@ -46,6 +46,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/categoryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
+                android:text="Category:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
 
         </LinearLayout>
 

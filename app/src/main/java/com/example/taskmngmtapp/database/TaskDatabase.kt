@@ -9,7 +9,7 @@ import com.example.taskmngmtapp.converter.Converters
 import com.example.taskmngmtapp.dao.TaskDao
 import com.example.taskmngmtapp.models.Tasks
 
-@Database(entities = [Tasks::class], version = 1, exportSchema = false)
+@Database(entities = [Tasks::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class TaskDatabase : RoomDatabase() {
     abstract fun taskDao(): TaskDao

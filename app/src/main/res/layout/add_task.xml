@@ -78,6 +78,34 @@
                     android:maxLines="5" />
 
             </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category:"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_light" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/categoryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edTaskDescL"
+                android:layout_marginTop="8dp"
+                android:hint="Select Category">
+
+
+
+                <!-- You can use a Spinner or a TextInputSpinner here -->
+                <Spinner
+                    android:id="@+id/categorySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EAE4E8"
+                    android:entries="@array/category_options" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
                 android:id="@+id/saveTaskBtn"
@@ -86,7 +114,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/black"
-
                 android:text="Save Task"
                 android:textSize="20sp" />
         </LinearLayout>

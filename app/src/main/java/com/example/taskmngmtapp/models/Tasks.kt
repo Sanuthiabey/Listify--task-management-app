@@ -13,5 +13,7 @@ data class Tasks(
     @ColumnInfo(name = "taskTitle")
     val title: String,
     val description: String,
-    val date: Date
+    val date: Date,
+    @ColumnInfo(name = "category")
+    val category: String
 )
