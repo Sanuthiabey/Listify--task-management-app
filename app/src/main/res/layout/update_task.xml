@@ -86,7 +86,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
                 android:backgroundTint="@color/black"
-                style="@style/Widget.App.Button.Fill"
                 android:text="Update Task"
                 android:textSize="20sp" />
         </LinearLayout>
