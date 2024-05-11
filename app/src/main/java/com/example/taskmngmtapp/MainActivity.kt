@@ -4,6 +4,7 @@ import TaskAdapter
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -47,6 +48,8 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         taskRecyclerView.adapter = taskAdapter
         taskRecyclerView.layoutManager = LinearLayoutManager(this)
 
+        // Initialize ViewModel and observe tasks
+        initViewModel()
         // Observe the tasks from the ViewModel and update the adapter
         taskViewModel.tasks.observe(this, Observer { tasks ->
             taskAdapter.setTasks(tasks)
@@ -129,6 +132,16 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                 Toast.makeText(this@MainActivity, "Please enter both title and description", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+    private fun initViewModel() {
+        // Initialize ViewModel
+        val taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+
+        // Observe the tasks from the ViewModel and update the adapter
+        taskViewModel.tasks.observe(this, Observer { tasks ->
+            Log.d("MainActivity", "Observed tasks: $tasks") // Log to check if tasks are observed
+            taskAdapter.setTasks(tasks)
+        })
     }
 
     private fun showDeleteConfirmationDialog(task: Tasks) {

@@ -12,13 +12,30 @@ import kotlinx.coroutines.launch
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
     private val taskRepository = TaskRepo(application)
     private val _tasks = MutableLiveData<List<Tasks>>()
-    val tasks: LiveData<List<Tasks>> = _tasks
+    val tasks: LiveData<List<Tasks>> get() = _tasks
+
+    init {
+        // Initialize tasks LiveData when ViewModel is created
+        loadTasks()
+    }
+
+    private fun loadTasks() {
+        viewModelScope.launch {
+            try {
+                _tasks.value = taskRepository.getAllTasks()
+            } catch (e: Exception) {
+                // Handle exceptions (e.g., database errors) appropriately
+                // Log or display an error message
+            }
+        }
+    }
 
     fun insertTask(task: Tasks) {
         viewModelScope.launch {
             try {
                 taskRepository.insertTask(task)
-                _tasks.value = taskRepository.getAllTasks()
+                // Refresh tasks after insertion
+                loadTasks()
             } catch (e: Exception) {
                 // Handle exceptions (e.g., database errors) appropriately
                 // Log or display an error message
@@ -30,7 +47,8 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
                 taskRepository.updateTask(task)
-                _tasks.value = taskRepository.getAllTasks()
+                // Refresh tasks after update
+                loadTasks()
             } catch (e: Exception) {
                 // Handle exceptions (e.g., database errors) appropriately
                 // Log or display an error message
@@ -42,7 +60,8 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
                 taskRepository.deleteTask(task)
-                _tasks.value = taskRepository.getAllTasks()
+                // Refresh tasks after deletion
+                loadTasks()
             } catch (e: Exception) {
                 // Handle exceptions (e.g., database errors) appropriately
                 // Log or display an error message
