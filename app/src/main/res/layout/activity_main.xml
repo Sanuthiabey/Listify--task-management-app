@@ -70,12 +70,23 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/categoryCountContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/todaytask"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
 
+                <!-- Category count boxes will be added programmatically -->
+
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/taskRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/todaytask"
+                android:layout_below="@id/categoryCountContainer"
                 android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_centerHorizontal="true"

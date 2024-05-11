@@ -6,4 +6,17 @@
         <item>Study</item>
         <item>Other</item>
     </string-array>
+
+    <integer-array name="category_ids">
+        <item>@+id/study_category</item>
+        <item>@+id/work_category</item>
+        <item>@+id/personal_category</item>
+        <item>@+id/other_category</item>
+    </integer-array>
+
+    <!-- Corrected -->
+    <item name="study_category" type="id">@+id/study_category</item>
+    <item name="work_category" type="id">@+id/work_category</item>
+    <item name="personal_category" type="id">@+id/personal_category</item>
+    <item name="other_category" type="id">@+id/other_category</item>
 </resources>

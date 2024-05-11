@@ -5,10 +5,13 @@ import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -36,6 +39,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     }
     private lateinit var taskAdapter: TaskAdapter
     private val taskViewModel: TaskViewModel by lazy { ViewModelProvider(this).get(TaskViewModel::class.java) }
+    private val categoryCountBoxes = mutableMapOf<String, View>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,6 +101,8 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                 Toast.makeText(this@MainActivity, "Please enter both title and description", Toast.LENGTH_SHORT).show()
             }
         }
+        initCategoryCountBoxes()
+        updateCategoryCountBoxes()
     }
 
     override fun onItemClick(task: Tasks) {
@@ -119,7 +125,37 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         taskTitleInput.setText("")
         taskDescriptionInput.setText("")
     }
+    private fun initCategoryCountBoxes() {
+        val categoryOptions = resources.getStringArray(R.array.category_options)
+        val categoryCountContainer = findViewById<LinearLayout>(R.id.categoryCountContainer)
 
+        for (category in categoryOptions) {
+            val countBoxView = layoutInflater.inflate(R.layout.category_count_box, categoryCountContainer, false)
+            val categoryNameTextView = countBoxView.findViewById<TextView>(R.id.categoryName)
+            val taskCountTextView = countBoxView.findViewById<TextView>(R.id.taskCount)
+
+            categoryNameTextView.text = category
+            taskCountTextView.text = "0"
+
+            categoryCountBoxes[category] = countBoxView
+            categoryCountContainer.addView(countBoxView)
+        }
+    }
+
+    private fun updateCategoryCountBoxes() {
+        val tasks = taskViewModel.tasks.value ?: emptyList()
+
+        categoryCountBoxes.values.forEach { view ->
+            val taskCountTextView = view.findViewById<TextView>(R.id.taskCount)
+            taskCountTextView.text = "0"
+        }
+
+        tasks.groupingBy { it.category }.eachCount().forEach { (category, count) ->
+            val countBoxView = categoryCountBoxes[category]
+            val taskCountTextView = countBoxView?.findViewById<TextView>(R.id.taskCount)
+            taskCountTextView?.text = count.toString()
+        }
+    }
     private fun showUpdateTaskDialog(task: Tasks) {
         // Show the update task dialog and populate the form with the task data
         updateTaskDialog.show()
@@ -152,6 +188,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         taskViewModel.tasks.observe(this, Observer { tasks ->
             Log.d("MainActivity", "Observed tasks: $tasks") // Log to check if tasks are observed
             taskAdapter.setTasks(tasks)
+            updateCategoryCountBoxes()
         })
     }
 
