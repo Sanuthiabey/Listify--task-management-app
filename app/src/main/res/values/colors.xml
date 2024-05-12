@@ -3,4 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="brown">#ab9685</color>
+    <color name="darkblue">#3C5B6F</color>
+    <color name="beigebrown">#E5E5AC</color>
+    <color name="lightblue">#B5C0D0</color>
+    <color name="lightgreen">#AFC8AD</color>
+    <color name="blue">#93B5C6</color>
+    <color name="lightpurple">#C9CCD5</color>
+    <color name="darkgrey">#52616B</color>
+    <color name="lightgrey">#C9D6DF</color>
+    <color name="lgreen">#DFFF00</color>
+    <color name="gold">#CECE00</color>
 </resources>

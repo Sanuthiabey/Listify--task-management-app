@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
-    app:cardBackgroundColor="@color/white">
+    app:cardBackgroundColor="@color/black"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="1dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,8 +17,13 @@
             android:id="@+id/TaskTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="New Task"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -25,7 +32,11 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
-            android:layout_margin="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:tint="@color/white"
             android:src="@drawable/baseline_cancel_24" />
 
         <View
@@ -43,8 +54,16 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="8dp"
             android:orientation="vertical">
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title:"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_light" />
             <com.google.android.material.textfield.TextInputLayout
+
+
                 style="@style/Widget.App.TextInputLayout"
                 android:id="@+id/TaskTitleL"
                 android:layout_width="match_parent"
@@ -55,11 +74,18 @@
                     android:id="@+id/TaskTi"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
-                    android:background="#EAE4E8"
+                    android:fontFamily="@font/poppins_medium"
+                    android:background="@drawable/rounded_corners"
                     android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title Description:"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_light" />
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.App.TextInputLayout"
                 android:id="@+id/edTaskDescL"
@@ -71,7 +97,8 @@
                     android:id="@+id/TaskDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#EAE4E8"
+                    android:background="@drawable/rounded_corners"
+                    android:fontFamily="@font/poppins_medium"
                     android:gravity="top|start"
                     android:inputType="textMultiLine"
                     android:lines="5"
@@ -83,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:text="Category:"
                 android:textSize="15dp"
+                android:textColor="@color/white"
                 android:fontFamily="@font/poppins_light" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -100,7 +128,7 @@
                     android:id="@+id/categorySpinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#EAE4E8"
+                    android:background="@drawable/rounded_corners"
                     android:entries="@array/category_options" />
 
 
@@ -113,8 +141,9 @@
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/white"
                 android:text="Save Task"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
         </LinearLayout>
     </RelativeLayout>

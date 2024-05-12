@@ -3,7 +3,7 @@
     <style name="Base.Theme.TaskMngmtApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:statusBarColor">@color/brown</item>
+        <item name="android:statusBarColor">@color/black</item>
     </style>
 
     <style name="Theme.TaskMngmtApp" parent="Base.Theme.TaskMngmtApp" />
@@ -41,4 +41,9 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
+    <style name="RoundedEdges" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item> <!-- Adjust the corner size as needed -->
+    </style>
+
 </resources>
