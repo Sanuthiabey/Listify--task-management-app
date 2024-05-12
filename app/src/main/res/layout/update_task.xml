@@ -102,7 +102,7 @@
                 android:backgroundTint="@color/white"
                 android:text="Update Task"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </LinearLayout>
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

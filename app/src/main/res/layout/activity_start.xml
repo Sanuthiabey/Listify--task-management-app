@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="500dp"
         android:backgroundTint="@color/white"
         android:fontFamily="@font/poppins_medium"
         android:text="View My Tasks"
